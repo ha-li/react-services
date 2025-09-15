@@ -1,6 +1,6 @@
 import type { Post } from '../types';
 
-type Props =  {
+interface Props {
   post: Post;
 };
 

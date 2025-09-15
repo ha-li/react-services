@@ -1,4 +1,4 @@
-import type { PostData } from './types';
+import type { PostData, NewPost, SavedPost } from './types';
 
 export async function getPosts() {
   const response = await fetch("http://localhost:3001/posts/");
@@ -11,6 +11,20 @@ export async function getPosts() {
   const body = (await response.json()) as unknown;
   assertIsPosts(body);
   return body;
+}
+
+export async function savePost(newPostData: NewPost) {
+  const response = await fetch(
+    "http://localhost:3001/posts", 
+    {
+      method: 'POST', 
+      body: JSON.stringify(newPostData), 
+      headers: {'Content-Type': 'application/json'}
+    }
+  );
+  const body = (await response.json()) as unknown;
+  assertIsSavedPost(body);
+  return { ...newPostData, ...body};
 }
 
 /* export function getPost(postsData: PostData[], index: number): Post {
@@ -32,4 +46,10 @@ export function assertIsPosts (postsData: unknown): asserts postsData is PostDat
     }
 
   });
+}
+
+export function assertIsSavedPost(post: any): asserts post is SavedPost {
+  if (!('id' in post)) {
+    throw new Error('post does not contain id');
+  }
 }

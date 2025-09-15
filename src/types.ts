@@ -4,8 +4,14 @@ export interface Post {
   description: string;
 }
 
-export type PostData = {
-  id: string;
+export type PostData = Post;
+
+export interface NewPost {
   title: string;
   description: string;
 }
+
+export interface SavedPost {
+  id: string;
+}
+

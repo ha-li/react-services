@@ -3,12 +3,22 @@
     {
       "title": "Getting started with fetch",
       "description": "How to interact with backend APIs using fetch",
-      "id": 1
+      "id": "1"
     },
     {
       "title": "Getting started with useEffect",
       "description": "How to use React's useEffect to interact with back end APIs",
-      "id": 2
+      "id": "2"
+    },
+    {
+      "id": "6024",
+      "title": "a title",
+      "description": "a description"
+    },
+    {
+      "id": "94bc",
+      "title": "a new post",
+      "description": "I am fixed"
     }
   ]
 }

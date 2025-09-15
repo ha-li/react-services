@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getPosts } from '../service';
-import type { PostData } from '../types';
+import { getPosts, savePost } from '../service';
+import type { PostData, NewPost } from '../types';
 import { PostsList } from './PostList';
+import { NewPostForm } from './NewPostForm';
 
 export function PostsPage () {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,6 +22,11 @@ export function PostsPage () {
     };
   }, []);  // end useEffect
 
+  async function handleSave(newPostData: NewPost) {
+    const newPost = await savePost(newPostData);
+    setPosts([newPost, ...posts]);
+  }
+
   if (isLoading) {
     return (
       <div>Loading ...</div>
@@ -29,9 +35,14 @@ export function PostsPage () {
 
 
   return (
-    <div>
-      <h2>Posts</h2>
-      <PostsList posts={posts} />
-    </div>
+    <>
+      <div>
+        <h2>Posts</h2>
+        <PostsList posts={posts} />
+      </div>
+      <div>
+        <NewPostForm onSave={handleSave} />
+      </div>
+    </>
   );
 }

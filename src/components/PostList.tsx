@@ -1,7 +1,7 @@
 import type {PostData} from '../types';
 import { Post } from './Post'
 
-type Props = {
+interface Props {
   posts: PostData[];
 };
 
