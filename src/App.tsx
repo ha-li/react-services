@@ -1,14 +1,19 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { getPosts } from './service';
 import { PostsPage } from './components/PostsPage';
 
 import './App.css'
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <PostsPage />,
+      loader: getPosts,
+    },
+  ]);
 
-  return (
-    <>
-      <PostsPage />
-    </>
-  );
+  return <RouterProvider router={router} fallbackElement={<div>Loading...</div>} />;
 }
 
 export default App

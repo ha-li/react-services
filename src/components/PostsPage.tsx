@@ -1,14 +1,17 @@
-import { useEffect, useState } from 'react';
-import { getPosts, savePost } from '../service';
+// import { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import { assertIsPosts, getPosts, savePost } from '../service';
 import type { PostData, NewPost } from '../types';
 import { PostsList } from './PostList';
 import { NewPostForm } from './NewPostForm';
 
 export function PostsPage () {
-  const [isLoading, setIsLoading] = useState(true);
-  const [posts, setPosts] = useState<PostData[]>([]);
+  const posts = useLoaderData();
+  assertIsPosts(posts);
+  //const [isLoading, setIsLoading] = useState(true);
+  //const [posts, setPosts] = useState<PostData[]>([]);
 
-  useEffect( () => {
+  /* useEffect( () => {
     let cancel = false;
     getPosts().then( (data) => {
       if (!cancel) {
@@ -21,18 +24,19 @@ export function PostsPage () {
       cancel = true;
     };
   }, []);  // end useEffect
+  */
 
   async function handleSave(newPostData: NewPost) {
-    const newPost = await savePost(newPostData);
-    setPosts([newPost, ...posts]);
+    await savePost(newPostData);
+    // setPosts([newPost, ...posts]);
   }
 
-  if (isLoading) {
+  /* if (isLoading) {
     return (
       <div>Loading ...</div>
     );
   } // end isLoading
-
+  */
 
   return (
     <>
