@@ -1,5 +1,5 @@
 import type {PostData} from '../types';
-
+import { Post } from './Post'
 
 type Props = {
   posts: PostData[];
@@ -9,10 +9,7 @@ export function PostsList ({ posts }: Props) {
   return (
     <ul>
       { posts.map( (post) => (
-        <li key={post.id}>
-          <h3>{post.title}</h3>
-          <p>{post.description}</p>
-        </li>
+        <Post key={post.id} post={post} />
       ))}
     </ul>
   );

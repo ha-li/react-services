@@ -4,7 +4,7 @@ import type { PostData } from '../types';
 import { PostsList } from './PostList';
 
 export function PostsPage () {
-  const [isLoading, setIsLoadging] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState<PostData[]>([]);
 
   useEffect( () => {
@@ -12,7 +12,7 @@ export function PostsPage () {
     getPosts().then( (data) => {
       if (!cancel) {
         setPosts(data);
-        setIsLoadging(false);
+        setIsLoading(false);
       }
     });
 

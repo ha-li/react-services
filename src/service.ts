@@ -1,4 +1,4 @@
-import type { PostData, Post } from './types';
+import type { PostData } from './types';
 
 export async function getPosts() {
   const response = await fetch("http://localhost:3001/posts/");
@@ -13,9 +13,9 @@ export async function getPosts() {
   return body;
 }
 
-export function getPost(postsData: PostData[], index: number): Post {
+/* export function getPost(postsData: PostData[], index: number): Post {
   return postsData[index];
-}
+} */
 
 export function assertIsPosts (postsData: unknown): asserts postsData is PostData[] {
   if (!Array.isArray(postsData)) {
