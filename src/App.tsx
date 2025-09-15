@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { getPosts } from './service';
 import { PostsPage } from './components/PostsPage';
-
 import './App.css'
 
 function App() {
@@ -14,10 +13,11 @@ function App() {
   ]);
 
   return (
-    <RouterProvider 
-      router={router} 
-    />
+      <RouterProvider 
+        router={router} 
+      />
   );
 }
 
 export default App
+// 
